@@ -23,31 +23,31 @@ author:
   # Biographic information
   avatar           : "profile.png"
   name             : "Junlin Wang"
-  pronouns         : "he"  
+  pronouns         :   
   bio              : "A junior student with strong interests in robot learning for manipulation"
   location         : "China"
-  employer         : "Southern University of Science and Technology"
+  employer         : "Southern University of\nScience and Technology"
   uri              : 
   email            : "12112921@mail.sustech.edu.cn" 
 
   # Academic websites
   arxiv            : # URL
-  googlescholar    : ""
+  googlescholar    : 
   impactstory      : # URL
-  orcid            : ""
-  pubmed           : ""
+  orcid            : 
+  pubmed           : 
   researchgate     : # URL
 
   # Repositories and software development
   bitbucket        : # Username
   codepen          : # Username
   dribbble         : # Username
-  github           : "https://github.com/HenryWJL"
+  github           : "HenryWJL"
   kaggle           : # Username  
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
   # Social media
-  bluesky          : "bsky.app" # Replace this with you Bluesky username
+  bluesky          : # Replace this with you Bluesky username
   facebook         : # Username
   flickr           : # Username
   foursquare       : # Username
