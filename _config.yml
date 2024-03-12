@@ -22,11 +22,11 @@ repository               : "HenryWJL/HenryWJL.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Junlin Wang"
+  name             : 
   pronouns         :   
-  bio              : "Junior at Southern University of Science and Technology (SUSTech), majoring in Automation"
-  location         : "Shenzhen, China"
-  employer         : "SUSTech"
+  bio              : 
+  location         : 
+  employer         : 
   uri              : 
   email            : "12112921@mail.sustech.edu.cn" 
 
