@@ -11,7 +11,7 @@ locale                   : "China"
 title                    : "Home"
 title_separator          : "-"
 name                     : &name "Junlin Wang"
-description              : &description "Junior at SUSTech"
+description              : &description "A junior at SUSTech"
 url                      : https://henrywjl.github.io
 baseurl                  : ""
 repository               : "HenryWJL/HenryWJL.github.io"
