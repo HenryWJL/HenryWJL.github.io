@@ -11,4 +11,4 @@ I am an undergraduate student in Automation at Southern University of Science an
 
 My research interests lie at the intersection of robot learning and computer vision. I am excited about developing novel methods that enable robots to efficiently acquire diverse, high-precision manipulation skills while generalizing to unseen objects and scenarios.
 
-Previously, I worked on few-shot 7-DoF grasp pose detection with Prof. [Zhiyun Lin](https://scholar.google.com/citations?user=ic9y2dIAAAAJ&hl=en) at SUSTech. Recently, I am interested in imitation learning, knowledge distillation, and diffusion models. I am now planning to incorporate diffusion models into object manipulation while reducing computational cost through knowledge distillation.
+Previously, I worked on few-shot 7-DoF grasp pose detection with Prof. [Zhiyun Lin](https://scholar.google.com/citations?user=ic9y2dIAAAAJ&hl=en) at SUSTech. Recently, I am researching on imitation learning, knowledge distillation, and diffusion models.
