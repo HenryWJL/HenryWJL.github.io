@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Junlin Wang"
+title: "Junlin Wang 王俊麟"
 author_profile: true
 redirect_from: 
   - /about/
