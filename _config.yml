@@ -212,6 +212,11 @@ collections:
     output: true
     permalink: /:collection/:path/
 
+# Collections
+collections:
+  publications:
+    output: true
+    permalink: /:collection/:path/
 
 # Defaults
 defaults:
@@ -242,7 +247,7 @@ defaults:
       author_profile: true
       share: true
       comments: true
-  _publications
+  # _publications
   - scope:
       path: ""
       type: publications
