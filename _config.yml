@@ -25,8 +25,8 @@ author:
   name             : 
   pronouns         :   
   bio              : 
-  location         : 
-  employer         : 
+  location         : "Shenzhen, China"
+  employer         : "SUSTech"
   uri              : 
   email            : "12112921@mail.sustech.edu.cn" 
 
@@ -58,7 +58,7 @@ author:
   lastfm           : # Username
   linkedin         : # Username
   mastodon         : # URL
-  medium           : "Henry Wang"
+  medium           : "@wangjunlin131"
   pinterest        : # Username
   soundcloud       : # Username
   steam            : # Username
