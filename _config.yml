@@ -7,11 +7,11 @@
 # server process.
 
 # Basic Site Settings
-locale                   : "China"
+locale                   : "USA"
 title                    : "Home"
 title_separator          : "-"
 name                     : &name "Junlin Wang"
-description              : &description "A junior at SUSTech"
+description              : &description "A Robotics Master's student at UPenn."
 url                      : https://henrywjl.github.io
 baseurl                  : ""
 repository               : "HenryWJL/HenryWJL.github.io"
@@ -25,10 +25,10 @@ author:
   name             : 
   pronouns         :   
   bio              : 
-  location         : "Shenzhen, China"
-  employer         : "SUSTech"
+  location         : "Philadelphia, PA, USA"
+  employer         : "UPenn"
   uri              : 
-  email            : "12112921@mail.sustech.edu.cn" 
+  email            : "wangjl@seas.upenn.edu" 
 
   # Academic websites
   arxiv            : # URL
@@ -56,7 +56,7 @@ author:
   keybase          : # Username
   instagram        : "wangjunlin131"
   lastfm           : # Username
-  linkedin         : # Username
+  linkedin         : "junlin-wang-07623037b"
   mastodon         : # URL
   medium           : "https://medium.com/@wangjunlin131"
   pinterest        : # Username
