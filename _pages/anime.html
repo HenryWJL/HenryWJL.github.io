@@ -5,157 +5,203 @@ title: "My Favourite Anime"
 author_profile: true
 ---
 
+<div style="display: flex; gap: 10px; margin-bottom: 30px;">
+  <button onclick="setLanguage('en')" style="padding: 5px 15px; cursor: pointer; border-radius: 5px; border: 1px solid #ccc; background: #eee;">English</button>
+  <button onclick="setLanguage('zh')" style="padding: 5px 15px; cursor: pointer; border-radius: 5px; border: 1px solid #ccc; background: #eee;">中文</button>
+</div>
+
+<script>
+  function setLanguage(lang) {
+    const enElements = document.querySelectorAll('.lang-en');
+    const zhElements = document.querySelectorAll('.lang-zh');
+    
+    if (lang === 'en') {
+      enElements.forEach(el => el.style.display = 'block');
+      zhElements.forEach(el => el.style.display = 'none');
+    } else {
+      enElements.forEach(el => el.style.display = 'none');
+      zhElements.forEach(el => el.style.display = 'block');
+    }
+  }
+</script>
 
 <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 40px;">
-
   <img src="/images/clannad.jpg" 
-       alt="gimo" 
+       alt="Clannad" 
        style="width: 120px; min-width: 120px; height: auto; flex-shrink: 0; border-radius: 8px;">
-
   <div style="font-size: 13pt; line-height: 1.3;">
-    <strong>Clannad</strong><br>
-    Clannad is my all-time favorite anime. As the saying goes, "spelled as Clannad, experienced as life." 
-    The story transcends schoolyard friendships and adult romance; it is ultimately about the profound family 
-    bonds that anchor our entire existence. Familial love is a gift most of us are granted from birth, yet it 
-    is so frequently taken for granted. It is only after navigating life's long, arduous journey and taking a 
-    moment to look back that we realize how profoundly precious that unconditional love truly is.<br>
+    <div class="lang-en">
+      <strong>Clannad</strong><br>
+      Clannad is my all-time favorite anime. As the saying goes, "spelled as Clannad, experienced as life." 
+      The story transcends schoolyard friendships and adult romance; it is ultimately about the profound family 
+      bonds that anchor our entire existence. Familial love is a gift most of us are granted from birth, yet it 
+      is so frequently taken for granted. It is only after navigating life's long, arduous journey and taking a 
+      moment to look back that we realize how profoundly precious that unconditional love truly is.<br>
+    </div>
+    <div class="lang-zh" style="display: none;">
+      <strong>Clannad</strong><br>
+      《Clannad》是我个人最喜欢的番剧。俗话说，“写作Clannad，读作人生”，这部番里讲述的故事超越了校园时代的友情和成人时代的爱情，最终回归到了维系我们基本存在的家庭羁绊上面。亲情是我们大多数人与生俱来所拥有的东西，因此又常常被视为理所当然，然而只有在经历了道阻且长的人生旅程，回首往事时，我们才会意识到这种无条件的爱是多么的珍贵。<br>
+    </div>
   </div>
-
 </div> 
 
 <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 40px;">
-
   <img src="/images/attack_on_titan.jpg" 
-       alt="gimo" 
+       alt="Attack on Titan" 
        style="width: 120px; min-width: 120px; height: auto; flex-shrink: 0; border-radius: 8px;">
-
   <div style="font-size: 13pt; line-height: 1.3;">
-    <strong>Attack on Titan</strong><br>
-    "On that day, humanity remembered the terror of being ruled by them." Attack on Titan is an anime that starts 
-    off as an absolute 10/10 and somehow never drops the ball. Instead of fizzling out, the story gets deeper and 
-    more complex, throwing crazy twist after crazy twist at you until it hits a mind-blowing peak when the truth about 
-    the Titans is finally revealed. If you can dodge spoilers and watch the whole thing fresh, it will absolutely give 
-    you an unforgettable, unparalleled ride.<br>
+    <div class="lang-en">
+      <strong>Attack on Titan</strong><br>
+      "On that day, humanity remembered the terror of being ruled by them." Attack on Titan is an anime that starts 
+      off as an absolute 10/10 and somehow never drops the ball. Instead of fizzling out, the story gets deeper and 
+      more complex, throwing crazy twist after crazy twist at you until it hits a mind-blowing peak when the truth about 
+      the Titans is finally revealed. If you can dodge spoilers and watch the whole thing fresh, it will absolutely give 
+      you an unforgettable, unparalleled ride.<br>
+    </div>
+    <div class="lang-zh" style="display: none;">
+      <strong>进击的巨人</strong><br>
+      “那一天，人类回想起了曾经被它们所支配的恐惧。”《进击的巨人》是一部开局就拉满，后续高潮迭起的番剧。整个故事的剧情不仅没有烂尾，反而逐层深入，跌宕起伏，直到关于巨人的真相浮出水面时达到最高潮。如果你能在没有被剧透的情况下看完整部番，你绝对会获得无与伦比的体验。<br>
+    </div>
   </div>
-
 </div>
 
 <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 40px;">
-
   <img src="/images/steins_gate.jpg" 
-       alt="gimo" 
+       alt="Steins;Gate" 
        style="width: 120px; min-width: 120px; height: auto; flex-shrink: 0; border-radius: 8px;">
-
   <div style="font-size: 13pt; line-height: 1.3;">
-    <strong>Steins;Gate</strong><br>
-    Steins;Gate is my favorite sci-fi anime of all time. It is no exaggeration to say that it has 
-    actually inspired many of my own ideas for scientific research. If you delve into the scientific theories underpinning 
-    the narrative, you will discover a comprehensive and logically self-consistent framework. Nothing that happens in the 
-    anime is pulled out of thin air; rather, every event unfolds in strict accordance with the rules established by this 
-    theoretical system. As the mad scientist himself would declare: "This is the choice of Steins;Gate."<br>
+    <div class="lang-en">
+      <strong>Steins;Gate</strong><br>
+      Steins;Gate is my favorite sci-fi anime of all time. It is no exaggeration to say that it has 
+      actually inspired many of my own ideas for scientific research. If you delve into the scientific theories underpinning 
+      the narrative, you will discover a comprehensive and logically self-consistent framework. Nothing that happens in the 
+      anime is pulled out of thin air; rather, every event unfolds in strict accordance with the rules established by this 
+      theoretical system. As the mad scientist himself would declare: "This is the choice of Steins;Gate."<br>
+    </div>
+    <div class="lang-zh" style="display: none;">
+      <strong>命运石之门</strong><br>
+      《命运石之门》是我最喜欢的科幻番。毫不夸张地说，它激发了我许多科研方面的灵感。如果你深入探究了整个故事背后的科学理论，就会发现一个完整且逻辑自洽的理论框架。番中发生的一切都不是凭空捏造的；相反，每一个事件都严格按照这个理论系统建立的规则展开。正如狂气的疯狂科学家本人所言：“一切都是命运石之门的选择。”<br>
+    </div>
   </div>
-
 </div> 
 
 <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 40px;">
-
   <img src="/images/haruhi.webp" 
-       alt="gimo" 
+       alt="Haruhi Suzumiya" 
        style="width: 120px; min-width: 120px; height: auto; flex-shrink: 0; border-radius: 8px;">
-
   <div style="font-size: 13pt; line-height: 1.3;">
-    <strong>The Melancholy of Haruhi Suzumiya</strong><br>
-    The Melancholy of Haruhi Suzumiya is an anime that legitimately changed my perspective on life. Back in my sophomore 
-    year of college, when I was first getting into research, I went through a really lost phase trying to figure out how 
-    to juggle my classes and my lab work. Haruhi was the one who taught me to just follow my passion and do what I like. 
-    It had such an impact on me that, every single morning back then, I would have "God Knows" playing on repeat while I 
-    was rushing back and forth between lectures and the lab.<br>
+    <div class="lang-en">
+      <strong>The Melancholy of Haruhi Suzumiya</strong><br>
+      The Melancholy of Haruhi Suzumiya is an anime that legitimately changed my perspective on life. Back in my sophomore 
+      year of college, when I was first getting into research, I went through a really lost phase trying to figure out how 
+      to juggle my classes and my lab work. Haruhi was the one who taught me to just follow my passion and do what I like. 
+      It had such an impact on me that, every single morning back then, I would have "God Knows" playing on repeat while I 
+      was rushing back and forth between lectures and the lab.<br>
+    </div>
+    <div class="lang-zh" style="display: none;">
+      <strong>凉宫春日的忧郁</strong><br>
+      《凉宫春日的忧郁》是一部真正意义上改变了我人生观的番剧。在我大二的时候，我第一次接触科研，那时我经历了一段非常迷茫的时期，试图搞清楚如何在学业和科研之间进行平衡。正是凉宫春日教会了我要遵循自己的内心，做自己喜欢做的事。这部番就是对我产生了如此大的影响，以至于那段时期的每天早晨，当我在实验室和教室之间奔波时，我都会在耳机里单曲循环《God Knows》。<br>
+    </div>
   </div>
-
 </div> 
 
 <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 40px;">
-
   <img src="/images/assassination_classroom.webp" 
-       alt="gimo" 
+       alt="Assassination Classroom" 
        style="width: 120px; min-width: 120px; height: auto; flex-shrink: 0; border-radius: 8px;">
-
   <div style="font-size: 13pt; line-height: 1.3;">
-    <strong>Assassination Classroom</strong><br>
-    Assassination Classroom is, without a doubt, the greatest educational anime I have ever seen. The students of Class 3-E 
-    all possessed unique talents, yet their potential was entirely stifled by a rigid, exam-oriented education system. 
-    Through countless "assassination" attempts, Koro-sensei managed to unearth those hidden gifts, untangle their deepest 
-    emotional knots, and guide them into becoming well-rounded, healthy adults. As a fun aside, I actually dedicated my 
-    very first cosplay to Koro-sensei to commemorate my college graduation!.<br>
+    <div class="lang-en">
+      <strong>Assassination Classroom</strong><br>
+      Assassination Classroom is, without a doubt, the greatest educational anime I have ever seen. The students of Class 3-E 
+      all possessed unique talents, yet their potential was entirely stifled by a rigid, exam-oriented education system. 
+      Through countless "assassination" attempts, Koro-sensei managed to unearth those hidden gifts, untangle their deepest 
+      emotional knots, and guide them into becoming well-rounded, healthy adults. As a fun aside, I actually dedicated my 
+      very first cosplay to Koro-sensei to commemorate my college graduation!<br>
+    </div>
+    <div class="lang-zh" style="display: none;">
+      <strong>暗杀教室</strong><br>
+      毫无疑问，《暗杀教室》是我看过的最棒的教育番。3年E班的学生们都拥有独特的天赋，但他们的潜力却被死板的应试教育所限制。通过无数次的“暗杀”尝试，杀老师成功地发掘了这些隐藏的天赋，并解开了他们内心深处的心结，引导他们成为身心健康的人。顺便提一件有趣的事，我其实把我人生中的第一次Cosplay献给了杀老师，以此纪念我大学本科毕业！<br>
+    </div>
   </div>
-
 </div>
 
 <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 40px;">
-
   <img src="/images/code_gease.jpg" 
-       alt="gimo" 
+       alt="Code Geass" 
        style="width: 120px; min-width: 120px; height: auto; flex-shrink: 0; border-radius: 8px;">
-
   <div style="font-size: 13pt; line-height: 1.3;">
-    <strong>Code Gease</strong><br>
-    Code Geass is my favorite mind-game anime, and Lelouch is the most charismatic anime protagonist I have 
-    ever seen. He is the kind of character who can drop a legendary line like, "The only ones who should kill are those who 
-    are prepared to be killed," and actually back it up with his actions. The Zero Requiem at the very end is the absolute 
-    proof of his conviction. Here is a comment that sums him up perfectly: <a href="https://www.bilibili.com/video/BV1ns41167iq/?spm_id_from=333.337.search-card.all.click&vd_source=37af1c08c8a644e788e8657b7bb711a8" target="_blank"> link </a>.<br>
+    <div class="lang-en">
+      <strong>Code Geass</strong><br>
+      Code Geass is my favorite mind-game anime, and Lelouch is the most charismatic anime protagonist I have 
+      ever seen. He is the kind of character who can drop a legendary line like, "The only ones who should kill are those who 
+      are prepared to be killed," and actually back it up with his actions. The Zero Requiem at the very end is the absolute 
+      proof of his conviction. Here is a comment that sums him up perfectly: <a href="https://www.bilibili.com/video/BV1ns41167iq/?spm_id_from=333.337.search-card.all.click&vd_source=37af1c08c8a644e788e8657b7bb711a8" target="_blank"> link </a>.<br>
+    </div>
+    <div class="lang-zh" style="display: none;">
+      <strong>反叛的鲁路修</strong><br>
+      《反叛的鲁路修》是我最喜欢的智斗番，而鲁路修则是我见过的最具魅力的番剧男主角。他能说出“有被杀的觉悟，才有开枪的资格”，并且用亲身行动来印证这句话，最后的零之镇魂曲正是他这种觉悟的完美证明。在此我想分享一条评论，完美地总结了鲁路修这个人：<a href="https://www.bilibili.com/video/BV1ns41167iq/?spm_id_from=333.337.search-card.all.click&vd_source=37af1c08c8a644e788e8657b7bb711a8" target="_blank">链接</a>。<br>
+    </div>
   </div>
-
 </div>
 
 <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 40px;">
-
   <img src="/images/pretty_derby.jpg" 
-       alt="gimo" 
+       alt="Uma Musume" 
        style="width: 120px; min-width: 120px; height: auto; flex-shrink: 0; border-radius: 8px;">
-
   <div style="font-size: 13pt; line-height: 1.3;">
-    <strong>Uma Musume: Pretty Derby Season 2</strong><br>
-    Uma Musume: Pretty Derby Season 2 is my favorite sports anime. Drawing inspiration from real-life racehorses, the series 
-    masterfully crafts characters who feel incredibly genuine and fully fleshed out. From Rice Shower's heroic entrance in 
-    Episode 8 and Twin Turbo's legendary grand escape in Episode 10, to Tokai Teio's miraculous comeback in the finale, watching 
-    these breathtaking displays of individual heroism never fails to make my blood pump with pure excitement. It is worth mentioning 
-    that every single one of these scenes is based on actual historical events. It really makes you marvel at how, sometimes, reality 
-    is far more dramatic than fiction.<br>
+    <div class="lang-en">
+      <strong>Uma Musume: Pretty Derby Season 2</strong><br>
+      Uma Musume: Pretty Derby Season 2 is my favorite sports anime. Drawing inspiration from real-life racehorses, the series 
+      masterfully crafts characters who feel incredibly genuine and fully fleshed out. From Rice Shower's heroic entrance in 
+      Episode 8 and Twin Turbo's legendary grand escape in Episode 10, to Tokai Teio's miraculous comeback in the finale, watching 
+      these breathtaking displays of individual heroism never fails to make my blood pump with pure excitement. It is worth mentioning 
+      that every single one of these scenes is based on actual historical events. It really makes you marvel at how, sometimes, reality 
+      is far more dramatic than fiction.<br>
+    </div>
+    <div class="lang-zh" style="display: none;">
+      <strong>赛马娘 Pretty Derby 第二季</strong><br>
+      《赛马娘 Pretty Derby 第二季》是我最喜欢的运动番。该番从现实中的赛马汲取灵感，巧妙地塑造了一个个真实立体的马娘角色。从第8集中米浴的英雄登场，第10集中双涡轮的世纪大逃，再到大结局中东海帝王奇迹的复活，这些个人英雄主义的表演总是让我热血沸腾。值得一提的是，所有这些剧情都是基于真实的历史事件改编而成，这不得不让人感叹，有时候现实远比小说更加戏剧化。<br>
+    </div>
   </div>
-
 </div>
 
 <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 40px;">
-
   <img src="/images/fullmetal_alchemist.jpg" 
-       alt="gimo" 
+       alt="Fullmetal Alchemist" 
        style="width: 120px; min-width: 120px; height: auto; flex-shrink: 0; border-radius: 8px;">
-
   <div style="font-size: 13pt; line-height: 1.3;">
-    <strong>Fullmetal Alchemist</strong><br>
-    Fullmetal Alchemist is my favorite battle shounen. The narrative pacing in the early episodes is relatively deliberate, but 
-    it accelerates drastically following the tragic death of Maes Hughes. From that point on, dark undercurrents of conspiracy 
-    begin to surface, and even the seemingly righteous military is cast under a shroud of mystery. When the truth is finally unveiled, 
-    you realize that the entire grand stage of their world was actually a long-orchestrated guillotine, and the true enemies had been 
-    hiding in plain sight all along. Yet, in the end, what ultimately triumphs over this darkness is humanity's sheer courage and indomitable will.<br>
+    <div class="lang-en">
+      <strong>Fullmetal Alchemist</strong><br>
+      Fullmetal Alchemist is my favorite battle shounen. The narrative pacing in the early episodes is relatively deliberate, but 
+      it accelerates drastically following the tragic death of Maes Hughes. From that point on, dark undercurrents of conspiracy 
+      begin to surface, and even the seemingly righteous military is cast under a shroud of mystery. When the truth is finally unveiled, 
+      you realize that the entire grand stage of their world was actually a long-orchestrated guillotine, and the true enemies had been 
+      hiding in plain sight all along. Yet, in the end, what ultimately triumphs over this darkness is humanity's sheer courage and indomitable will.<br>
+    </div>
+    <div class="lang-zh" style="display: none;">
+      <strong>钢之炼金术师</strong><br>
+      《钢之炼金术师》是我最喜欢的热血番。这部番早期的叙事节奏相对平缓，但在马斯·休斯牺牲后节奏开始加快，暗流涌动之下各种阴谋开始浮现，甚至连看似正义的军队也笼罩在神秘的阴影之下。当真相最终被揭晓，你会发现整个世界舞台实际上是一个精心策划的断头台，而真正的敌人一直隐藏在大众的身边。最终战胜这黑暗的，则是人类纯粹的勇气和不屈的意志。<br>
+    </div>
   </div>
-
 </div>
 
 <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 40px;">
-
   <img src="/images/86.jpg" 
-       alt="gimo" 
+       alt="86 EIGHTY-SIX" 
        style="width: 120px; min-width: 120px; height: auto; flex-shrink: 0; border-radius: 8px;">
-
   <div style="font-size: 13pt; line-height: 1.3;">
-    <strong>86 EIGHTY-SIX</strong><br>
-    86 EIGHTY-SIX is my favorite mecha anime (if we leave Code Geass out of the equation). While its overarching plot might not be 
-    the most groundbreaking, its atmospheric portrayal of the battlefield left a profound impression on me. A comrade who is joking 
-    with you one second can become a cold corpse the next; this overwhelming atmosphere of despair offers a stark, visceral realization 
-    of the true cruelty of war. Furthermore, I absolutely loved the visual direction of the penultimate and final episodes. Shin and Lena’s 
-    two encounters—first amidst the desolate ruins of a war-torn battlefield, and later in a lush, vibrant meadow—create two remarkably distinct 
-    aesthetic atmospheres that evoke entirely different, yet equally powerful, emotional responses.<br>
+    <div class="lang-en">
+      <strong>86 EIGHTY-SIX</strong><br>
+      86 EIGHTY-SIX is my favorite mecha anime (if we leave Code Geass out of the equation). While its overarching plot might not be 
+      the most groundbreaking, its atmospheric portrayal of the battlefield left a profound impression on me. A comrade who is joking 
+      with you one second can become a cold corpse the next; this overwhelming atmosphere of despair offers a stark, visceral realization 
+      of the true cruelty of war. Furthermore, I absolutely loved the visual direction of the penultimate and final episodes. Shin and Lena’s 
+      two encounters—first amidst the desolate ruins of a war-torn battlefield, and later in a lush, vibrant meadow—create two remarkably distinct 
+      aesthetic atmospheres that evoke entirely different, yet equally powerful, emotional responses.<br>
+    </div>
+    <div class="lang-zh" style="display: none;">
+      <strong>86-不存在的战区-</strong><br>
+      《86-不存在的战区-》是我最喜欢的机战番（如果不把《反叛的鲁路修》算在内的话）。虽然它的总体情节可能没那么有新意，但它对战场氛围的刻画给我留下了深刻的印象。前一秒还在和你开玩笑的战友，下一秒可能就变成了一具冰冷的尸体，这种令人窒息的绝望氛围完美地揭示了战争的残酷。此外，我非常喜欢倒数第二集和最后一集的演出。辛和蕾娜两次重逢，第一次是在断壁残垣的战场上，第二次是在生机盎然的草原上，两个场景诞生了两种截然不同的意境，也唤起了内容不同但同样强烈的情感共鸣。<br>
+    </div>
   </div>
-
 </div>
