@@ -56,8 +56,6 @@ window.onload = function () {
 
     var map = L.map('travel-map').setView([20, 10], 2);
 
-    console.log("Map created");
-
     L.tileLayer(
         'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
         {
@@ -66,11 +64,46 @@ window.onload = function () {
         }
     ).addTo(map);
 
-    console.log("Tile layer added");
+    var trips = [
+        {
+            title: "Philadelphia, USA",
+            date: "August 2025",
+            lat: 39.9526,
+            lng: -75.1652,
+            image: "/images/profile.jpg",
+            description: "Started my Master's at the University of Pennsylvania."
+        },
+        {
+            title: "New York City",
+            date: "June 2026",
+            lat: 40.7128,
+            lng: -74.0060,
+            image: "/images/profile.jpg",
+            description: "Visited the Statue of Liberty."
+        },
+        {
+            title: "Singapore",
+            date: "Summer 2024",
+            lat: 1.3521,
+            lng: 103.8198,
+            image: "/images/profile.jpg",
+            description: "Research internship at NUS AI Lab."
+        }
+    ];
 
-    L.marker([39.9526, -75.1652])
-        .addTo(map)
-        .bindPopup("Philadelphia");
+    trips.forEach(function(trip) {
+
+        var popup =
+            '<div class="popup-title">' + trip.title + '</div>' +
+            '<div class="popup-date">' + trip.date + '</div>' +
+            '<img class="popup-img" src="' + trip.image + '">' +
+            '<div class="popup-desc">' + trip.description + '</div>';
+
+        L.marker([trip.lat, trip.lng])
+            .addTo(map)
+            .bindPopup(popup);
+
+    });
 
 };
 </script>
