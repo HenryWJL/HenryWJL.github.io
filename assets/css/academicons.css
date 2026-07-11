@@ -569,16 +569,3 @@ border-radius: .1em;
 .ai-inverse {
   color: #fff;
 }
-
-.popup-gallery {
-    display: flex;
-    overflow-x: auto;
-    gap: 8px;
-    margin-bottom: 10px;
-}
-
-.popup-gallery img {
-    height: 160px;
-    border-radius: 6px;
-    flex-shrink: 0;
-}
