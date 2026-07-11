@@ -106,6 +106,63 @@ window.onload = function () {
 
     trips.forEach(function(trip) {
 
+        var popup =
+            '<div class="popup-title">' + trip.title + '</div>' +
+            '<div class="popup-date">' + trip.date + '</div>' +
+            '<img class="popup-img" src="' + trip.image + '">' +
+            '<div class="popup-desc">' + trip.description + '</div>';
+
+        L.marker([trip.lat, trip.lng])
+            .addTo(map)
+            .bindPopup(popup);
+
+    });
+
+};
+</script>
+
+<!-- <script>
+window.onload = function () {
+
+    var map = L.map('travel-map').setView([20, 10], 2);
+
+    L.tileLayer(
+        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+            maxZoom: 19,
+            attribution: '&copy; OpenStreetMap contributors'
+        }
+    ).addTo(map);
+
+    var trips = [
+        {
+            title: "Philadelphia, USA",
+            date: "August 2025",
+            lat: 39.9526,
+            lng: -75.1652,
+            image: "/images/profile.jpg",
+            description: "Started my Master's at the University of Pennsylvania."
+        },
+        {
+            title: "New York City",
+            date: "June 2026",
+            lat: 40.7128,
+            lng: -74.0060,
+            image: "/images/profile.jpg",
+            description: "Visited the Statue of Liberty."
+        },
+        {
+            title: "Singapore",
+            date: "Summer 2024",
+            lat: 1.3521,
+            lng: 103.8198,
+            image: "/images/profile.jpg",
+            description: "Research internship at NUS AI Lab."
+        }
+    ];
+
+    trips.forEach(function(trip) {
+
         // var imagesHTML = '<div class="popup-gallery">';
 
         // trip.images.forEach(function(img) {
@@ -133,4 +190,4 @@ window.onload = function () {
     });
 
 };
-</script>
+</script> -->
