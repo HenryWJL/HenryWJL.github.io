@@ -5,6 +5,7 @@ title: "Travel Map"
 author_profile: true
 ---
 
+{% raw %}
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
 <style>
@@ -36,7 +37,7 @@ author_profile: true
     }
 </style>
 
-<div id="pilgrimage-map" markdown="0"></div>
+<div id="pilgrimage-map"></div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
@@ -46,15 +47,13 @@ author_profile: true
         // Initialize the map
         const map = L.map('pilgrimage-map').setView([35.69, 139.70], 5);
 
-        // THE FIX: Breaking up the string so Jekyll's Liquid engine doesn't destroy the URL
-        const tileUrl = 'https://' + '{s}' + '.tile.openstreetmap.org/' + '{z}' + '/' + '{x}' + '/' + '{y}' + '.png';
-
-        L.tileLayer(tileUrl, {
+        // Standard OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
-        // THE FIX: Force Leaflet to recalculate its size after 500ms to eliminate the gray box
+        // Force Leaflet to recalculate its size after 500ms to eliminate the gray box
         setTimeout(function() {
             map.invalidateSize();
         }, 500);
@@ -74,7 +73,7 @@ author_profile: true
              .bindPopup(popupContent);
         }
 
-        // Location 1
+        // Steins;Gate Location
         addLocation(
             35.6979, 139.7719, 
             "Radio Kaikan", 
@@ -83,7 +82,7 @@ author_profile: true
             "https://via.placeholder.com/250x150?text=Radio+Kaikan"
         );
 
-        // Location 2
+        // Your Lie in April Location
         addLocation(
             35.7388, 139.6535, 
             "Nerima Culture Center", 
@@ -92,7 +91,7 @@ author_profile: true
             "https://via.placeholder.com/250x150?text=Towa+Hall"
         );
 
-        // Location 3
+        // Liz and the Blue Bird Location
         addLocation(
             34.8913, 135.8080, 
             "Uji Bridge", 
@@ -103,3 +102,4 @@ author_profile: true
         
     });
 </script>
+{% endraw %}
