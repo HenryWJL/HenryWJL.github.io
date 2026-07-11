@@ -1,3 +1,9 @@
+<!--
+Note: if the webpage fails to render the map, right click the mouse,
+select "Inspect", open "Console", then run the following commands:
+
+try { const testMap = L.map("travel-map").setView([20, 10], 2); console.log(testMap); } catch (e) { console.error(e); }
+-->
 ---
 layout: archive
 permalink: /travel-map/
@@ -45,19 +51,6 @@ author_profile: true
     font-size: 14px;
     line-height: 1.4;
 }
-
-/* .popup-gallery {
-    display: flex;
-    overflow-x: auto;
-    gap: 8px;
-    margin-bottom: 10px;
-}
-
-.popup-gallery img {
-    height: 160px;
-    border-radius: 6px;
-    flex-shrink: 0;
-} */
 </style>
 
 <div id="travel-map"></div>
@@ -68,14 +61,6 @@ author_profile: true
 window.onload = function () {
 
     var map = L.map('travel-map').setView([20, 10], 2);
-
-    L.tileLayer(
-        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-        {
-            maxZoom: 19,
-            attribution: '&copy; OpenStreetMap contributors'
-        }
-    ).addTo(map);
 
     var trips = [
         {
@@ -94,14 +79,6 @@ window.onload = function () {
             image: "/images/profile.jpg",
             description: "Visited the Statue of Liberty."
         },
-        {
-            title: "Singapore",
-            date: "Summer 2024",
-            lat: 1.3521,
-            lng: 103.8198,
-            image: "/images/profile.jpg",
-            description: "Research internship at NUS AI Lab."
-        }
     ];
 
     trips.forEach(function(trip) {
@@ -120,60 +97,3 @@ window.onload = function () {
 
 };
 </script>
-
-<!-- <script>
-window.onload = function () {
-
-    var map = L.map('travel-map').setView([20, 10], 2);
-
-    var trips = [
-        {
-            title: "Philadelphia, USA",
-            date: "August 2025",
-            lat: 39.9526,
-            lng: -75.1652,
-            images: ["/images/profile.jpg", "/images/profile.jpg"],
-            description: "Started my Master's at the University of Pennsylvania."
-        },
-        {
-            title: "New York City",
-            date: "June 2026",
-            lat: 40.7128,
-            lng: -74.0060,
-            images: ["/images/profile.jpg", "/images/profile.jpg"],
-            description: "Visited the Statue of Liberty."
-        },
-        {
-            title: "Singapore",
-            date: "Summer 2024",
-            lat: 1.3521,
-            lng: 103.8198,
-            images: ["/images/profile.jpg", "/images/profile.jpg"],
-            description: "Research internship at NUS AI Lab."
-        }
-    ];
-
-    trips.forEach(function(trip) {
-
-        var imagesHTML = '<div class="popup-gallery">';
-
-        trip.images.forEach(function(img) {
-            imagesHTML += '<img src="' + img + '">';
-        });
-
-        imagesHTML += '</div>';
-
-        var popup =
-            '<div class="popup-title">' + trip.title + '</div>' +
-            '<div class="popup-date">' + trip.date + '</div>' +
-            imagesHTML +
-            '<div class="popup-desc">' + trip.description + '</div>';
-
-        L.marker([trip.lat, trip.lng])
-            .addTo(map)
-            .bindPopup(popup);
-
-    });
-
-};
-</script> -->
