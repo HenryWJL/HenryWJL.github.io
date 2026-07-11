@@ -5,103 +5,83 @@ title: "Travel Map"
 author_profile: true
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Map</title>
+<!-- 1. Include Leaflet CSS directly in the content -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+<style>
+    /* Changed height to a fixed pixel amount so it fits inside your theme layout */
+    #pilgrimage-map {
+        width: 100%;
+        height: 600px; 
+        border-radius: 8px; /* Optional: softens the edges */
+        z-index: 1; /* Ensures the map doesn't cover your theme's navigation menus */
+    }
     
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    .popup-image {
+        width: 100%;
+        max-width: 250px;
+        border-radius: 4px;
+        margin-bottom: 8px;
+    }
+    .popup-title {
+        font-size: 16px;
+        font-weight: bold;
+        margin: 0 0 5px 0;
+    }
+    .popup-desc {
+        font-size: 14px;
+        color: #444;
+        margin: 0;
+    }
+</style>
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: sans-serif;
-        }
-        /* The map container must have a defined height */
-        #pilgrimage-map {
-            width: 100vw;
-            height: 100vh; 
-        }
-        /* Style for the images inside the popups */
-        .popup-image {
-            width: 100%;
-            max-width: 250px;
-            border-radius: 4px;
-            margin-bottom: 8px;
-        }
-        .popup-title {
-            font-size: 16px;
-            font-weight: bold;
-            margin: 0 0 5px 0;
-        }
-        .popup-desc {
-            font-size: 14px;
-            color: #444;
-            margin: 0;
-        }
-    </style>
-</head>
-<body>
+<!-- 2. The map container -->
+<div id="pilgrimage-map"></div>
 
-    <div id="pilgrimage-map"></div>
+<!-- 3. Include Leaflet JavaScript -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+    // 4. Initialize the map
+    const map = L.map('pilgrimage-map').setView([35.6895, 139.6917], 10);
 
-    <script>
-        // 4. Initialize the map
-        // [35.6895, 139.6917] is Tokyo. '10' is the initial zoom level.
-        const map = L.map('pilgrimage-map').setView([35.6895, 139.6917], 10);
+    // 5. Add the base map tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
 
-        // 5. Add the base map tiles (OpenStreetMap is free and open-source)
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
+    // 6. Function to easily create new pilgrimage locations
+    function addLocation(lat, lng, title, anime, description, imageUrl) {
+        const popupContent = `
+            <div>
+                <img src="${imageUrl}" alt="${title}" class="popup-image" onerror="this.style.display='none'">
+                <h3 class="popup-title">${title}</h3>
+                <p class="popup-desc"><strong>Anime:</strong> ${anime}</p>
+                <p class="popup-desc">${description}</p>
+            </div>
+        `;
 
-        // 6. Function to easily create new pilgrimage locations
-        function addLocation(lat, lng, title, anime, description, imageUrl) {
-            // Create the HTML content for the popup
-            const popupContent = `
-                <div>
-                    <img src="${imageUrl}" alt="${title}" class="popup-image" onerror="this.style.display='none'">
-                    <h3 class="popup-title">${title}</h3>
-                    <p class="popup-desc"><strong>Anime:</strong> ${anime}</p>
-                    <p class="popup-desc">${description}</p>
-                </div>
-            `;
+        L.marker([lat, lng])
+         .addTo(map)
+         .bindPopup(popupContent);
+    }
 
-            // Place the marker and bind the popup to it
-            L.marker([lat, lng])
-             .addTo(map)
-             .bindPopup(popupContent);
-        }
+    // Example 1: Your Name (Kimi no Na wa)
+    addLocation(
+        35.6860, 139.7224, 
+        "Suga Shrine Stairs", 
+        "Your Name (Kimi no Na wa)", 
+        "The iconic stairs where Taki and Mitsuha finally meet at the end of the film.", 
+        "https://via.placeholder.com/250x150?text=Suga+Shrine+Photo"
+    );
 
-        // ---------------------------------------------------------
-        // ADD YOUR LOCATIONS HERE
-        // Format: lat, lng, "Location Name", "Anime", "Description", "Image URL or Path"
-        // ---------------------------------------------------------
-
-        // Example 1: Your Name (Kimi no Na wa) - Suga Shrine Stairs
-        addLocation(
-            35.6860, 139.7224, 
-            "Suga Shrine Stairs", 
-            "Your Name (Kimi no Na wa)", 
-            "The iconic stairs where Taki and Mitsuha finally meet at the end of the film.", 
-            "https://via.placeholder.com/250x150?text=Suga+Shrine+Photo" // Replace with your actual image path like 'images/suga-shrine.jpg'
-        );
-
-        // Example 2: Steins;Gate - Radio Kaikan (Akihabara)
-        addLocation(
-            35.6979, 139.7719, 
-            "Radio Kaikan", 
-            "Steins;Gate", 
-            "The building where the time machine crashed on the roof.", 
-            "https://via.placeholder.com/250x150?text=Radio+Kaikan+Photo"
-        );
-
-    </script>
-</body>
-</html>
+    // Example 2: Steins;Gate
+    addLocation(
+        35.6979, 139.7719, 
+        "Radio Kaikan", 
+        "Steins;Gate", 
+        "The building where the time machine crashed on the roof.", 
+        "https://via.placeholder.com/250x150?text=Radio+Kaikan+Photo"
+    );
+</script>
