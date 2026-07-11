@@ -70,7 +70,7 @@ window.onload = function () {
             date: "August 2025",
             lat: 39.9526,
             lng: -75.1652,
-            image: [
+            images: [
                 "/images/profile.jpg",
                 "/images/profile.jpg",
                 "/images/profile.jpg"
@@ -97,11 +97,23 @@ window.onload = function () {
 
     trips.forEach(function(trip) {
 
+        var imagesHTML = `
+        <div class="popup-gallery">
+            ${trip.images.map(img => `<img src="${img}">`).join("")}
+        </div>
+        `;
+
         var popup =
             '<div class="popup-title">' + trip.title + '</div>' +
             '<div class="popup-date">' + trip.date + '</div>' +
-            '<img class="popup-img" src="' + trip.image + '">' +
+            imagesHTML +
             '<div class="popup-desc">' + trip.description + '</div>';
+
+        // var popup =
+        //     '<div class="popup-title">' + trip.title + '</div>' +
+        //     '<div class="popup-date">' + trip.date + '</div>' +
+        //     '<img class="popup-img" src="' + trip.image + '">' +
+        //     '<div class="popup-desc">' + trip.description + '</div>';
 
         L.marker([trip.lat, trip.lng])
             .addTo(map)
