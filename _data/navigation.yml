@@ -11,3 +11,6 @@ main:
 
   - title: "My Favourite Anime"
     url: /anime/
+
+  - title: "Travel Map"
+    url: /travel-map/
