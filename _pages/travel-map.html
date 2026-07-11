@@ -5,16 +5,18 @@ title: "Travel Map"
 author_profile: true
 ---
 
-<!-- 1. Include Leaflet CSS directly in the content -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
 <style>
-    /* Changed height to a fixed pixel amount so it fits inside your theme layout */
+    /* Added !important and position:relative to fight theme overrides */
     #pilgrimage-map {
-        width: 100%;
-        height: 600px; 
-        border-radius: 8px; /* Optional: softens the edges */
-        z-index: 1; /* Ensures the map doesn't cover your theme's navigation menus */
+        width: 100% !important;
+        height: 600px !important; 
+        border-radius: 8px;
+        z-index: 1;
+        position: relative !important;
+        display: block !important;
+        background-color: #eee; /* Shows a gray box if tiles fail to load */
     }
     
     .popup-image {
@@ -35,53 +37,58 @@ author_profile: true
     }
 </style>
 
-<!-- 2. The map container -->
 <div id="pilgrimage-map"></div>
 
-<!-- 3. Include Leaflet JavaScript -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+{% raw %}
 <script>
-    // 4. Initialize the map
-    const map = L.map('pilgrimage-map').setView([35.6895, 139.6917], 10);
+    // Wait for the theme's DOM to fully load before touching the map
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        // Initialize the map, centered roughly on Tokyo
+        const map = L.map('pilgrimage-map').setView([35.69, 139.70], 11);
 
-    // 5. Add the base map tiles
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
+        // Add the base map tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
 
-    // 6. Function to easily create new pilgrimage locations
-    function addLocation(lat, lng, title, anime, description, imageUrl) {
-        const popupContent = `
-            <div>
-                <img src="${imageUrl}" alt="${title}" class="popup-image" onerror="this.style.display='none'">
-                <h3 class="popup-title">${title}</h3>
-                <p class="popup-desc"><strong>Anime:</strong> ${anime}</p>
-                <p class="popup-desc">${description}</p>
-            </div>
-        `;
+        // Function to create new pilgrimage locations
+        function addLocation(lat, lng, title, anime, description, imageUrl) {
+            const popupContent = `
+                <div>
+                    <img src="${imageUrl}" alt="${title}" class="popup-image" onerror="this.style.display='none'">
+                    <h3 class="popup-title">${title}</h3>
+                    <p class="popup-desc"><strong>Anime:</strong> ${anime}</p>
+                    <p class="popup-desc">${description}</p>
+                </div>
+            `;
 
-        L.marker([lat, lng])
-         .addTo(map)
-         .bindPopup(popupContent);
-    }
+            L.marker([lat, lng])
+             .addTo(map)
+             .bindPopup(popupContent);
+        }
 
-    // Example 1: Your Name (Kimi no Na wa)
-    addLocation(
-        35.6860, 139.7224, 
-        "Suga Shrine Stairs", 
-        "Your Name (Kimi no Na wa)", 
-        "The iconic stairs where Taki and Mitsuha finally meet at the end of the film.", 
-        "https://via.placeholder.com/250x150?text=Suga+Shrine+Photo"
-    );
+        // Example 1: Steins;Gate
+        addLocation(
+            35.6979, 139.7719, 
+            "Radio Kaikan", 
+            "Steins;Gate", 
+            "The iconic Akihabara building where the time machine crashed on the roof.", 
+            "https://via.placeholder.com/250x150?text=Radio+Kaikan"
+        );
 
-    // Example 2: Steins;Gate
-    addLocation(
-        35.6979, 139.7719, 
-        "Radio Kaikan", 
-        "Steins;Gate", 
-        "The building where the time machine crashed on the roof.", 
-        "https://via.placeholder.com/250x150?text=Radio+Kaikan+Photo"
-    );
+        // Example 2: Your Lie in April
+        addLocation(
+            35.7388, 139.6535, 
+            "Nerima Culture Center", 
+            "Your Lie in April", 
+            "The real-world location of Towa Hall where Kousei and Kaori performed.", 
+            "https://via.placeholder.com/250x150?text=Towa+Hall"
+        );
+        
+    });
 </script>
+{% endraw %}
