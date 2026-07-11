@@ -52,62 +52,25 @@ author_profile: true
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script>
-// Initialize map
-const map = L.map('travel-map').setView([20, 10], 2);
+window.onload = function () {
 
-// OpenStreetMap
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-}).addTo(map);
+    var map = L.map('travel-map').setView([20, 10], 2);
 
-// ======================
-// Add your trips here
-// ======================
+    console.log("Map created");
 
-const trips = [
+    L.tileLayer(
+        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+            maxZoom: 19,
+            attribution: '&copy; OpenStreetMap contributors'
+        }
+    ).addTo(map);
 
-{
-    title: "Philadelphia, USA",
-    date: "August 2025",
-    lat: 39.9526,
-    lng: -75.1652,
-    image: "/images/profile.jpg",
-    description: "Started my Master's at the University of Pennsylvania."
-},
+    console.log("Tile layer added");
 
-{
-    title: "New York City",
-    date: "June 2026",
-    lat: 40.7128,
-    lng: -74.0060,
-    image: "/images/profile.jpg",
-    description: "Visited the Statue of Liberty, Times Square, and the Metropolitan Museum of Art."
-},
-
-{
-    title: "Singapore",
-    date: "Summer 2024",
-    lat: 1.3521,
-    lng: 103.8198,
-    image: "/images/profile.jpg",
-    description: "Research internship at NUS AI Lab."
-}
-
-];
-
-// Add markers
-trips.forEach(function(trip){
-
-    const popup = `
-        <div class="popup-title">${trip.title}</div>
-        <div class="popup-date">${trip.date}</div>
-        <img class="popup-img" src="${trip.image}">
-        <div class="popup-desc">${trip.description}</div>
-    `;
-
-    L.marker([trip.lat, trip.lng])
+    L.marker([39.9526, -75.1652])
         .addTo(map)
-        .bindPopup(popup);
+        .bindPopup("Philadelphia");
 
-});
+};
 </script>
