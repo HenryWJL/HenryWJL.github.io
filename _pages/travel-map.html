@@ -56,6 +56,10 @@ window.onload = function () {
 
     var map = L.map('travel-map').setView([20, 10], 2);
 
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
     var trips = [
         {
             title: "Philadelphia, USA",
