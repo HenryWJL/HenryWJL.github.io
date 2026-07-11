@@ -5,101 +5,109 @@ title: "Travel Map"
 author_profile: true
 ---
 
-{% raw %}
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
 
 <style>
-    #pilgrimage-map {
-        width: 100% !important;
-        height: 600px !important; 
-        border-radius: 8px;
-        z-index: 1;
-        position: relative !important;
-        display: block !important;
-        background-color: #eee;
-    }
-    
-    .popup-image {
-        width: 100%;
-        max-width: 250px;
-        border-radius: 4px;
-        margin-bottom: 8px;
-    }
-    .popup-title {
-        font-size: 16px;
-        font-weight: bold;
-        margin: 0 0 5px 0;
-    }
-    .popup-desc {
-        font-size: 14px;
-        color: #444;
-        margin: 0;
-    }
+#travel-map {
+    height: 650px;
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.leaflet-popup-content {
+    width: 260px;
+}
+
+.popup-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.popup-date {
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.popup-img {
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.popup-desc {
+    font-size: 14px;
+    line-height: 1.4;
+}
 </style>
 
-<div id="pilgrimage-map"></div>
+<div id="travel-map"></div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        
-        // Initialize the map
-        const map = L.map('pilgrimage-map').setView([35.69, 139.70], 5);
+// Initialize map
+const map = L.map('travel-map').setView([20, 10], 2);
 
-        // Standard OpenStreetMap tiles
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
+// OpenStreetMap
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
 
-        // Force Leaflet to recalculate its size after 500ms to eliminate the gray box
-        setTimeout(function() {
-            map.invalidateSize();
-        }, 500);
+// ======================
+// Add your trips here
+// ======================
 
-        function addLocation(lat, lng, title, anime, description, imageUrl) {
-            const popupContent = `
-                <div>
-                    <img src="${imageUrl}" alt="${title}" class="popup-image" onerror="this.style.display='none'">
-                    <h3 class="popup-title">${title}</h3>
-                    <p class="popup-desc"><strong>Anime:</strong> ${anime}</p>
-                    <p class="popup-desc">${description}</p>
-                </div>
-            `;
+const trips = [
 
-            L.marker([lat, lng])
-             .addTo(map)
-             .bindPopup(popupContent);
-        }
+{
+    title: "Philadelphia, USA",
+    date: "August 2025",
+    lat: 39.9526,
+    lng: -75.1652,
+    image: "/images/profile.jpg",
+    description: "Started my Master's at the University of Pennsylvania."
+},
 
-        // Steins;Gate Location
-        addLocation(
-            35.6979, 139.7719, 
-            "Radio Kaikan", 
-            "Steins;Gate", 
-            "The iconic Akihabara building central to the events of the series.", 
-            "https://via.placeholder.com/250x150?text=Radio+Kaikan"
-        );
+{
+    title: "New York City",
+    date: "June 2026",
+    lat: 40.7128,
+    lng: -74.0060,
+    image: "/images/profile.jpg",
+    description: "Visited the Statue of Liberty, Times Square, and the Metropolitan Museum of Art."
+},
 
-        // Your Lie in April Location
-        addLocation(
-            35.7388, 139.6535, 
-            "Nerima Culture Center", 
-            "Your Lie in April", 
-            "The real-world inspiration for Towa Hall.", 
-            "https://via.placeholder.com/250x150?text=Towa+Hall"
-        );
+{
+    title: "Singapore",
+    date: "Summer 2024",
+    lat: 1.3521,
+    lng: 103.8198,
+    image: "/images/profile.jpg",
+    description: "Research internship at NUS AI Lab."
+}
 
-        // Liz and the Blue Bird Location
-        addLocation(
-            34.8913, 135.8080, 
-            "Uji Bridge", 
-            "Liz and the Blue Bird", 
-            "A scenic crossing heavily featured in the Kyoto Animation universe.", 
-            "https://via.placeholder.com/250x150?text=Uji+Bridge"
-        );
-        
-    });
+];
+
+// Add markers
+trips.forEach(function(trip){
+
+    const popup = `
+        <div class="popup-title">${trip.title}</div>
+        <div class="popup-date">${trip.date}</div>
+        <img class="popup-img" src="${trip.image}">
+        <div class="popup-desc">${trip.description}</div>
+    `;
+
+    L.marker([trip.lat, trip.lng])
+        .addTo(map)
+        .bindPopup(popup);
+
+});
 </script>
-{% endraw %}
