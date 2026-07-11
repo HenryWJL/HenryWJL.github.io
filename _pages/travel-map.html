@@ -8,7 +8,6 @@ author_profile: true
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
 <style>
-    /* Added !important and position:relative to fight theme overrides */
     #pilgrimage-map {
         width: 100% !important;
         height: 600px !important; 
@@ -16,7 +15,7 @@ author_profile: true
         z-index: 1;
         position: relative !important;
         display: block !important;
-        background-color: #eee; /* Shows a gray box if tiles fail to load */
+        background-color: #eee;
     }
     
     .popup-image {
@@ -41,21 +40,25 @@ author_profile: true
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-{% raw %}
 <script>
-    // Wait for the theme's DOM to fully load before touching the map
     document.addEventListener("DOMContentLoaded", function() {
         
-        // Initialize the map, centered roughly on Tokyo
-        const map = L.map('pilgrimage-map').setView([35.69, 139.70], 11);
+        // Initialize the map
+        const map = L.map('pilgrimage-map').setView([35.69, 139.70], 5);
 
-        // Add the base map tiles
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        // THE FIX: Breaking up the string so Jekyll's Liquid engine doesn't destroy the URL
+        const tileUrl = 'https://' + '{s}' + '.tile.openstreetmap.org/' + '{z}' + '/' + '{x}' + '/' + '{y}' + '.png';
+
+        L.tileLayer(tileUrl, {
             maxZoom: 19,
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
-        // Function to create new pilgrimage locations
+        // THE FIX: Force Leaflet to recalculate its size after 500ms to eliminate the gray box
+        setTimeout(function() {
+            map.invalidateSize();
+        }, 500);
+
         function addLocation(lat, lng, title, anime, description, imageUrl) {
             const popupContent = `
                 <div>
@@ -71,24 +74,32 @@ author_profile: true
              .bindPopup(popupContent);
         }
 
-        // Example 1: Steins;Gate
+        // Location 1
         addLocation(
             35.6979, 139.7719, 
             "Radio Kaikan", 
             "Steins;Gate", 
-            "The iconic Akihabara building where the time machine crashed on the roof.", 
+            "The iconic Akihabara building central to the events of the series.", 
             "https://via.placeholder.com/250x150?text=Radio+Kaikan"
         );
 
-        // Example 2: Your Lie in April
+        // Location 2
         addLocation(
             35.7388, 139.6535, 
             "Nerima Culture Center", 
             "Your Lie in April", 
-            "The real-world location of Towa Hall where Kousei and Kaori performed.", 
+            "The real-world inspiration for Towa Hall.", 
             "https://via.placeholder.com/250x150?text=Towa+Hall"
+        );
+
+        // Location 3
+        addLocation(
+            34.8913, 135.8080, 
+            "Uji Bridge", 
+            "Liz and the Blue Bird", 
+            "A scenic crossing heavily featured in the Kyoto Animation universe.", 
+            "https://via.placeholder.com/250x150?text=Uji+Bridge"
         );
         
     });
 </script>
-{% endraw %}
