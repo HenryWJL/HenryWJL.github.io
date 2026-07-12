@@ -122,9 +122,24 @@ window.onload = function () {
             imagesHTML +
             '<div class="popup-desc">' + trip.description + '</div>';
 
-        L.marker([trip.lat, trip.lng])
-            .addTo(map)
-            .bindPopup(popup);
+        // L.marker([trip.lat, trip.lng])
+        //     .addTo(map)
+        //     .bindPopup(popup);
+
+        var marker = L.marker([trip.lat, trip.lng]).addTo(map);
+
+        marker.on("click", function () {
+
+            map.flyTo([trip.lat, trip.lng], 16, {
+                animate: true,
+                duration: 1.5
+            });
+
+            map.once("moveend", function () {
+                marker.bindPopup(popup).openPopup();
+            });
+
+        });
 
     });
 
