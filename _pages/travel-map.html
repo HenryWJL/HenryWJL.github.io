@@ -130,7 +130,7 @@ window.onload = function () {
             .addTo(map)
             .bindPopup(popup);
 
-        marker.on("click", function () {
+        marker.on("popupopen", function () {
             map.flyTo([trip.lat, trip.lng], 16, {
                 animate: true,
                 duration: 1.5
