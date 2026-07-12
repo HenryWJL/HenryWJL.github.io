@@ -122,9 +122,9 @@ window.onload = function () {
             imagesHTML +
             '<div class="popup-desc">' + trip.description + '</div>';
 
-        // L.marker([trip.lat, trip.lng])
-        //     .addTo(map)
-        //     .bindPopup(popup);
+        L.marker([trip.lat, trip.lng])
+            .addTo(map)
+            .bindPopup(popup);
 
         map.on("popupopen", function (e) {
             map.flyTo(
