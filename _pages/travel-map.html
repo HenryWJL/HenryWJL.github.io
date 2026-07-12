@@ -15,6 +15,281 @@ author_profile: true
     height: 650px;
     width: 100%;
     border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.leaflet-popup-content {
+    width: 280px;
+}
+
+.popup-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.popup-date {
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.popup-gallery {
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.popup-gallery img {
+    height: 160px;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.popup-desc {
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+/* ---------- Language Switch ---------- */
+
+.language-switch {
+    margin-bottom: 12px;
+    font-size: 16px;
+    user-select: none;
+}
+
+.language-switch a {
+    color: #666;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 0 3px;
+}
+
+.language-switch a.active {
+    color: #2a7ae2;
+    font-weight: 700;
+}
+
+.language-switch a:hover {
+    color: #2a7ae2;
+}
+</style>
+
+<div class="language-switch">
+    🌐
+    <a id="lang-en" class="active">English</a>
+    |
+    <a id="lang-zh">中文</a>
+</div>
+
+<div id="travel-map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+
+window.onload = function () {
+
+    //----------------------------------------------------
+    // Current language
+    //----------------------------------------------------
+
+    var currentLang = localStorage.getItem("travelMapLang") || "en";
+
+    //----------------------------------------------------
+    // Highlight language button
+    //----------------------------------------------------
+
+    function updateLanguageButtons() {
+
+        document.getElementById("lang-en")
+            .classList.toggle("active", currentLang === "en");
+
+        document.getElementById("lang-zh")
+            .classList.toggle("active", currentLang === "zh");
+    }
+
+    //----------------------------------------------------
+    // Initialize map
+    //----------------------------------------------------
+
+    var map = L.map("travel-map").setView([20, 10], 2);
+
+    L.tileLayer(
+        "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+        {
+            attribution:
+                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }
+    ).addTo(map);
+
+    //----------------------------------------------------
+    // Trip data
+    //----------------------------------------------------
+
+    var trips = [
+
+        {
+            title: {
+                en: "Sensō-ji",
+                zh: "浅草寺"
+            },
+
+            date: "July 2025",
+
+            lat: 35.715009,
+            lng: 139.797428,
+
+            images: [
+                "/images/travel/sensoji/001.jpeg",
+                "/images/travel/sensoji/002.jpeg",
+                "/images/travel/sensoji/003.jpeg",
+                "/images/travel/sensoji/004.jpeg",
+                "/images/travel/sensoji/005.jpeg",
+                "/images/travel/sensoji/006.jpeg"
+            ],
+
+            description: {
+                en: "Drew a Good Fortune (Kichi) omikuji at Sensō-ji. Luck was on my side!",
+                zh: "在浅草寺求到了一张吉签，好运！"
+            }
+        },
+
+        {
+            title: {
+                en: "Akihabara",
+                zh: "秋叶原"
+            },
+
+            date: "July 2025",
+
+            lat: 35.699839,
+            lng: 139.771958,
+
+            images: [
+                "/images/travel/akihabara/001.jpeg",
+                "/images/travel/akihabara/002.jpeg",
+                "/images/travel/akihabara/003.jpeg",
+                "/images/travel/akihabara/004.jpeg",
+                "/images/travel/akihabara/005.jpeg",
+                "/images/travel/akihabara/006.jpeg",
+                "/images/travel/akihabara/007.jpeg"
+            ],
+
+            description: {
+                en: "This is the choice of Steins;Gate! The gyudon was absolutely delicious and highly recommended.",
+                zh: "一切都是命运石之门的选择！（那家牛丼真的特别好吃，非常推荐一试）"
+            }
+        }
+
+    ];
+
+    //----------------------------------------------------
+    // Markers
+    //----------------------------------------------------
+
+    var markers = [];
+
+    function renderMarkers() {
+
+        // Remove old markers
+
+        markers.forEach(function(marker) {
+            map.removeLayer(marker);
+        });
+
+        markers = [];
+
+        var bounds = [];
+
+        trips.forEach(function(trip) {
+
+            var imagesHTML =
+                '<div class="popup-gallery">' +
+                trip.images.map(function(img) {
+                    return '<img src="' + img + '">';
+                }).join("") +
+                "</div>";
+
+            var popup =
+                '<div class="popup-title">' +
+                trip.title[currentLang] +
+                "</div>" +
+
+                '<div class="popup-date">' +
+                trip.date +
+                "</div>" +
+
+                imagesHTML +
+
+                '<div class="popup-desc">' +
+                trip.description[currentLang] +
+                "</div>";
+
+            var marker = L.marker([trip.lat, trip.lng])
+                .addTo(map)
+                .bindPopup(popup);
+
+            markers.push(marker);
+            bounds.push([trip.lat, trip.lng]);
+
+        });
+
+        if (bounds.length > 0) {
+            map.fitBounds(bounds, {
+                padding: [40, 40]
+            });
+        }
+
+        updateLanguageButtons();
+    }
+
+    //----------------------------------------------------
+    // Language switch
+    //----------------------------------------------------
+
+    document.getElementById("lang-en").onclick = function () {
+        currentLang = "en";
+        localStorage.setItem("travelMapLang", currentLang);
+        renderMarkers();
+    };
+
+    document.getElementById("lang-zh").onclick = function () {
+        currentLang = "zh";
+        localStorage.setItem("travelMapLang", currentLang);
+        renderMarkers();
+    };
+
+    //----------------------------------------------------
+    // Initial render
+    //----------------------------------------------------
+
+    renderMarkers();
+
+};
+
+</script>
+
+<!-- ---
+layout: archive
+permalink: /travel-map/
+title: "Travel Map"
+author_profile: true
+---
+
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+
+<style>
+#travel-map {
+    height: 650px;
+    width: 100%;
+    border-radius: 10px;
     margin-top: 20px;
     margin-bottom: 30px;
 }
@@ -74,30 +349,38 @@ window.onload = function () {
     }).addTo(map);
 
     var trips = [
+        // Japan
         {
-            title: "Philadelphia, USA",
-            date: "August 2025",
-            lat: 39.9526,
-            lng: -75.1652,
-            images: ["/images/profile.jpg", "/images/profile.jpg", "/images/profile.jpg", "/images/profile.jpg"],
-            description: "Started my Master's at the University of Pennsylvania."
+            title: "Sensō-ji 浅草寺",
+            date: "July 2025",
+            lat: 35.71500898292457,
+            lng: 139.79742777359257,
+            images: [
+                "/images/travel/sensoji/001.jpeg",
+                "/images/travel/sensoji/002.jpeg",
+                "/images/travel/sensoji/003.jpeg",
+                "/images/travel/sensoji/004.jpeg",
+                "/images/travel/sensoji/005.jpeg",
+                "/images/travel/sensoji/006.jpeg",
+            ],
+            description: "Drew a Good Fortune (Kichi) omikuji at Sensō-ji. Luck was on my side! 在浅草寺求到了一张吉签，好运！"
         },
         {
-            title: "New York City",
-            date: "June 2026",
-            lat: 40.7128,
-            lng: -74.0060,
-            images: ["/images/profile.jpg", "/images/profile.jpg"],
-            description: "Visited the Statue of Liberty."
+            title: "Akihabara 秋叶原",
+            date: "July 2025",
+            lat: 35.69983877413835,
+            lng: 139.77195829162315,
+            images: [
+                "/images/travel/akihabara/001.jpeg",
+                "/images/travel/akihabara/002.jpeg",
+                "/images/travel/akihabara/003.jpeg",
+                "/images/travel/akihabara/004.jpeg",
+                "/images/travel/akihabara/005.jpeg",
+                "/images/travel/akihabara/006.jpeg",
+                "/images/travel/akihabara/007.jpeg",
+            ],
+            description: "This is the choice of Steins;Gate! (The gyudon was absolutely delicious, definitely worth trying) 一切都是命运石之门的选择！（那家牛丼真的特别好吃，非常推荐一试）"
         },
-        {
-            title: "Singapore",
-            date: "Summer 2024",
-            lat: 1.3521,
-            lng: 103.8198,
-            images: ["/images/profile.jpg", "/images/profile.jpg"],
-            description: "Research internship at NUS AI Lab."
-        }
     ];
 
     trips.forEach(function(trip) {
@@ -122,7 +405,7 @@ window.onload = function () {
     });
 
 };
-</script>
+</script> -->
 
 <!--
 Note: if the webpage fails to render the map, right click the mouse,
