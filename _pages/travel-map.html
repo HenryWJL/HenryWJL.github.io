@@ -64,125 +64,6 @@ author_profile: true
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-
-<script>
-window.onload = function () {
-
-    var map = L.map('travel-map').setView([20, 10], 2);
-
-    L.tileLayer(
-        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-        {
-            maxZoom: 19,
-            attribution: '&copy; OpenStreetMap contributors'
-        }
-    ).addTo(map);
-
-    var trips = [
-        {
-            title: "Philadelphia, USA",
-            date: "August 2025",
-            lat: 39.9526,
-            lng: -75.1652,
-            images: ["/images/profile.jpg", "/images/profile.jpg"],
-            description: "Started my Master's at the University of Pennsylvania."
-        },
-        {
-            title: "New York City",
-            date: "June 2026",
-            lat: 40.7128,
-            lng: -74.0060,
-            images: ["/images/profile.jpg", "/images/profile.jpg"],
-            description: "Visited the Statue of Liberty."
-        },
-        {
-            title: "Singapore",
-            date: "Summer 2024",
-            lat: 1.3521,
-            lng: 103.8198,
-            images: ["/images/profile.jpg", "/images/profile.jpg"],
-            description: "Research internship at NUS AI Lab."
-        }
-    ];
-
-    trips.forEach(function(trip) {
-
-        var imagesHTML = '<div class="popup-gallery">';
-
-        trip.images.forEach(function(img) {
-            imagesHTML += '<img src="' + img + '">';
-        });
-
-        imagesHTML += '</div>';
-
-        var popup =
-            '<div class="popup-title">' + trip.title + '</div>' +
-            '<div class="popup-date">' + trip.date + '</div>' +
-            imagesHTML +
-            '<div class="popup-desc">' + trip.description + '</div>';
-
-        L.marker([trip.lat, trip.lng])
-            .addTo(map)
-            .bindPopup(popup);
-
-    });
-
-};
-</script>
-
-<!-- ---
-layout: archive
-permalink: /travel-map/
-title: "Travel Map"
-author_profile: true
----
-
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-/>
-
-<style>
-#travel-map {
-    height: 650px;
-    width: 100%;
-    border-radius: 10px;
-    margin-top: 20px;
-    margin-bottom: 30px;
-}
-
-.leaflet-popup-content {
-    width: 260px;
-}
-
-.popup-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 8px;
-}
-
-.popup-date {
-    color: #777;
-    font-size: 13px;
-    margin-bottom: 10px;
-}
-
-.popup-img {
-    width: 100%;
-    border-radius: 6px;
-    margin-bottom: 10px;
-}
-
-.popup-desc {
-    font-size: 14px;
-    line-height: 1.4;
-}
-</style>
-
-<div id="travel-map"></div>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
 <script>
 window.onload = function () {
 
@@ -198,7 +79,7 @@ window.onload = function () {
             date: "August 2025",
             lat: 39.9526,
             lng: -75.1652,
-            image: "/images/profile.jpg",
+            images: ["/images/profile.jpg", "/images/profile.jpg", "/images/profile.jpg", "/images/profile.jpg"],
             description: "Started my Master's at the University of Pennsylvania."
         },
         {
@@ -206,7 +87,7 @@ window.onload = function () {
             date: "June 2026",
             lat: 40.7128,
             lng: -74.0060,
-            image: "/images/profile.jpg",
+            images: ["/images/profile.jpg", "/images/profile.jpg"],
             description: "Visited the Statue of Liberty."
         },
         {
@@ -214,17 +95,24 @@ window.onload = function () {
             date: "Summer 2024",
             lat: 1.3521,
             lng: 103.8198,
-            image: "/images/profile.jpg",
+            images: ["/images/profile.jpg", "/images/profile.jpg"],
             description: "Research internship at NUS AI Lab."
         }
     ];
 
     trips.forEach(function(trip) {
 
+        var imagesHTML =
+            '<div class="popup-gallery">' +
+            trip.images.map(function(img) {
+                return '<img src="' + img + '">';
+            }).join('') +
+            '</div>';
+
         var popup =
             '<div class="popup-title">' + trip.title + '</div>' +
             '<div class="popup-date">' + trip.date + '</div>' +
-            '<img class="popup-img" src="' + trip.image + '">' +
+            imagesHTML +
             '<div class="popup-desc">' + trip.description + '</div>';
 
         L.marker([trip.lat, trip.lng])
@@ -234,7 +122,7 @@ window.onload = function () {
     });
 
 };
-</script> -->
+</script>
 
 <!--
 Note: if the webpage fails to render the map, right click the mouse,
