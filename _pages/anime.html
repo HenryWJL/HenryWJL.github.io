@@ -5,7 +5,7 @@ title: "My Favourite Anime"
 author_profile: true
 ---
 
-<div style="display: flex; gap: 10px; margin-bottom: 30px;">
+<!-- <div style="display: flex; gap: 10px; margin-bottom: 30px;">
   <button onclick="setLanguage('en')" style="padding: 5px 15px; cursor: pointer; border-radius: 5px; border: 1px solid #ccc; background: #eee;">English</button>
   <button onclick="setLanguage('zh')" style="padding: 5px 15px; cursor: pointer; border-radius: 5px; border: 1px solid #ccc; background: #eee;">中文</button>
 </div>
@@ -23,6 +23,76 @@ author_profile: true
       zhElements.forEach(el => el.style.display = 'block');
     }
   }
+</script> -->
+
+<style>
+.language-switch {
+    margin-bottom: 25px;
+    font-size: 16px;
+    user-select: none;
+}
+
+.language-switch a {
+    color: #666;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 0 3px;
+    transition: color 0.2s;
+}
+
+.language-switch a:hover {
+    color: #2a7ae2;
+}
+
+.language-switch a.active {
+    color: #2a7ae2;
+    font-weight: 700;
+}
+</style>
+
+<div class="language-switch">
+    🌐
+    <a id="lang-en" class="active">English</a>
+    |
+    <a id="lang-zh">中文</a>
+</div>
+
+<script>
+let currentLang = localStorage.getItem("animeLang") || "en";
+
+function updateLanguage() {
+
+    document.querySelectorAll(".lang-en").forEach(function(el) {
+        el.style.display = currentLang === "en" ? "block" : "none";
+    });
+
+    document.querySelectorAll(".lang-zh").forEach(function(el) {
+        el.style.display = currentLang === "zh" ? "block" : "none";
+    });
+
+    document.getElementById("lang-en")
+        .classList.toggle("active", currentLang === "en");
+
+    document.getElementById("lang-zh")
+        .classList.toggle("active", currentLang === "zh");
+
+    localStorage.setItem("animeLang", currentLang);
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    document.getElementById("lang-en").onclick = function() {
+        currentLang = "en";
+        updateLanguage();
+    };
+
+    document.getElementById("lang-zh").onclick = function() {
+        currentLang = "zh";
+        updateLanguage();
+    };
+
+    updateLanguage();
+});
 </script>
 
 <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 40px;">
