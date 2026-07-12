@@ -126,14 +126,15 @@ window.onload = function () {
         //     .addTo(map)
         //     .bindPopup(popup);
 
-        L.marker([trip.lat, trip.lng])
-            .addTo(map)
-            .bindPopup(popup)
-            .on("popupopen", function () {
-            map.flyTo([trip.lat, trip.lng], 16, {
-                animate: true,
-                duration: 1.5
-            });
+        map.on("popupopen", function (e) {
+            map.flyTo(
+                e.popup.getLatLng(),
+                16,
+                {
+                    animate: true,
+                    duration: 1.5
+                }
+            );
         });
 
     });
