@@ -11,7 +11,7 @@ locale                   : "USA"
 title                    : "Home"
 title_separator          : "-"
 name                     : &name "Junlin Wang"
-description              : &description "A Robotics Master's student at UPenn."
+description              : &description "A master's student at UPenn."
 url                      : https://henrywjl.github.io
 baseurl                  : ""
 repository               : "HenryWJL/HenryWJL.github.io"
@@ -28,7 +28,7 @@ author:
   location         : "Philadelphia, PA, USA"
   employer         : "UPenn"
   uri              : 
-  email            : "wangjl@seas.upenn.edu" 
+  email            : "wangjl@engineering.upenn.edu" 
 
   # Academic websites
   arxiv            : # URL
@@ -54,17 +54,17 @@ author:
   goodreads        : # Username
   google_plus      : # Username
   keybase          : # Username
-  instagram        : "wangjunlin131"
+  instagram        : #"wangjunlin131"
   lastfm           : # Username
   linkedin         : "junlin-wang-07623037b"
   mastodon         : # URL
-  medium           : "https://medium.com/@wangjunlin131"
+  medium           : #"https://medium.com/@wangjunlin131"
   pinterest        : # Username
   soundcloud       : # Username
   steam            : # Username
   telegram         : # URL
   tumblr           : # Username
-  twitter          : "@wangjl131"
+  twitter          : #"@wangjl131"
   vine             : # Username
   weibo            : # Username
   wikipedia        : # Username
